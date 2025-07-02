@@ -228,6 +228,20 @@ footer {
 	color: #666;
 }
 
+a:link {
+  color: #06f;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #648;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 768px) {
 	h1 {
 		font-size: 2.5rem;
