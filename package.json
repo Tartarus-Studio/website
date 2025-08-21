@@ -1,0 +1,77 @@
+{
+  
+  "name": "tartarus-studio",
+  
+  "version": "1.0.0",
+  
+  "type": "commonjs",
+  
+  "scripts": {
+  
+    
+  "start": "node backend/server.js",
+  
+    
+  "dev": "concurrently \"nodemon backend/server.js\" \"live-server frontend --port=5173 --no-browser\"",
+  
+    
+  "db:reset": "psql -U postgres -d kims_studio -f database/schema.sql",
+  
+    
+  "lint": "echo \"(اختياري) أضف ESLint لاحقًا\""
+  
+  },
+  
+  "keywords": [],
+  
+  "author": "",
+  
+  "license": "ISC",
+  
+  "dependencies": {
+  
+    
+  "bcryptjs": "^3.0.2",
+  
+    
+  "compression": "^1.8.1",
+  
+    
+  "cors": "^2.8.5",
+  
+    
+  "dotenv": "^17.2.1",
+  
+    
+  "express": "^5.1.0",
+  
+    
+  "helmet": "^8.1.0",
+  
+    
+  "jsonwebtoken": "^9.0.2",
+  
+    
+  "morgan": "^1.10.1",
+  
+    
+  "pg": "^8.16.3",
+  
+    
+  "zod": "^4.0.17"
+  
+  },
+  
+  "devDependencies": {
+  
+    
+  "concurrently": "^9.2.0",
+  
+    
+  "live-server": "^1.2.2",
+  
+    
+  "nodemon": "^3.1.10"
+  
+  }
+}
