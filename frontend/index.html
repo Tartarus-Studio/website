@@ -1,112 +1,199 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Tartarus — Home</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta charset="utf-8"/>
+  <title>Tartarus Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="theme-color" content="#0a0a0f"/>
+  <!-- Fonts: Orbitron (display), Inter (body) -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style/base.css">
-  <link rel="stylesheet" href="/style/theme.css">
-  <link rel="stylesheet" href="/style/anim.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style/styles.css">
+
+  <link rel="icon" type="image/svg+xml" href="./assets/logo.svg">
+  <link rel="alternate icon" href="./assets/logo.svg">
 </head>
 <body>
-  <!-- NAV -->
-  <header class="nav">
-    <a href="/home.html#gate" class="brand"><img src="/assets/logo.svg" class="brand-logo" alt="Tartarus"></a>
-    <nav class="menu">
-      <a href="/home.html#myth" data-spy>The Myth</a>
-      <a href="/home.html#monuments" data-spy>The Monuments</a>
-      <a href="/home.html#oracle" data-spy>The Oracle</a>
-    </nav>
+  <!-- Subtle background -->
+  <div class="bgfx"><div class="bgfx-g"></div><div class="bgfx-grid"></div><div class="bgfx-noise"></div></div>
+
+  <!-- NAV: centered group (logo + name + menu) + progress hairline -->
+  <header id="nav" class="nav">
+    <div class="nav-row container">
+      <a href="#home" class="brand" aria-label="Tartarus Studio">
+        <img src="./assets/logo.svg" class="brand-logo" alt="T">
+        <span class="brand-name">ARTARUS</span>
+      </a>
+
+      <nav id="menu" class="menu" aria-label="Primary">
+        <a href="#home" data-spy>Home</a>
+        <a href="#myth" data-spy>The Myth</a>
+        <a href="#monuments" data-spy>The Monuments</a>
+        <a href="#oracle" data-spy>The Oracle</a>
+      </nav>
+
+      <button id="burger" class="burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div id="navProgress" class="nav-progress"></div>
   </header>
 
-  <!-- Gate (عنوان الصفحة الرئيسية فقط) -->
-  <section id="gate" class="section hero">
-    <h1>WELCOME TO <span>TARTARUS</span></h1>
-    <p class="tag">World-building • Systemic gameplay • High-performance UI</p>
+  <!-- HERO -->
+  <section id="home" class="section hero container">
+    <div class="hero-left">
+      <h1 class="display">Forging <span>worlds</span> in code</h1>
+      <p class="lead">Tartarus aesthetics · Neon narrative · Precise mechanics.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#monuments">Explore our work</a>
+        <a class="btn btn-ghost" href="#oracle">Contact the studio</a>
+      </div>
+      <div class="social-row" id="heroSocial">
+        <!-- Smooth stroke icons (no fonts) -->
+        <a id="xLink" class="ico" aria-label="X / Twitter" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18M21 3L3 21"/></svg>
+          <span id="xUser" class="handle">@x</span>
+        </a>
+        <a id="discordLink" class="ico" aria-label="Discord" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 7.8a12 12 0 0 0-2.6.7C3.8 10 3 12 3 14c2 2.3 4.3 3.8 6.6 4.8.3-.6.6-1.2.8-1.8-1-.3-1.8-.8-2.6-1.4 2.8 1.8 5.5 1.8 8.2 0-.8.6-1.6 1-2.6 1.4.2.6.5 1.2.8 1.8 2.3-1 4.6-2.5 6.6-4.8 0-2-1-4-2-5.5a12 12 0 0 0-2.6-.7l-.7 1.2A12 12 0 0 0 12 8a12 12 0 0 0-3.9-.9l-.6-1.3Z"/><circle cx="9.5" cy="12.3" r="1"/><circle cx="14.5" cy="12.3" r="1"/></svg>
+          <span id="discordUser" class="handle">@discord</span>
+        </a>
+        <a id="ytLink" class="ico" aria-label="YouTube" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="3" ry="3"/><path d="M10 9l5 3-5 3z"/></svg>
+          <span id="ytUser" class="handle">@youtube</span>
+        </a>
+        <a id="gitLink" class="ico" aria-label="GitHub" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4 1.5-4-2-6-2m12 4v-3.5a3 3 0 0 0-.8-2.3c2.7-.3 5.5-1.3 5.5-6a4.6 4.6 0 0 0-1.2-3.2 4.2 4.2 0 0 0-.1-3.1S16.7 3.6 14 5a11.3 11.3 0 0 0-6 0C5.3 3.6 4.6 3.9 4.6 3.9a4.2 4.2 0 0 0-.1 3.1A4.6 4.6 0 0 0 3.3 10c0 4.7 2.9 5.7 5.6 6a3 3 0 0 0-.8 2.3V21"/></svg>
+          <span id="gitUser" class="handle">@github</span>
+        </a>
+      </div>
+    </div>
+
+    <figure class="hero-media">
+      <img src="./assets/logo.svg" alt="Tartarus project visual" loading="lazy" decoding="async" width="960" height="540">
+      <figcaption class="muted">Tartarus  ·  born from myth  ·  built out of metal</figcaption>
+    </figure>
   </section>
 
-  <!-- The Myth -->
+  <!-- MYTH -->
   <section id="myth" class="section container">
     <h2 class="ttl">The Myth</h2>
-    <p class="lead">Studio focus: readable systems, player agency, and consistent 60+ FPS polish.</p>
-    <div class="grid-3 reveal">
-      <article class="card"><h3>Philosophy</h3><p>Deterministic loops, snappy feedback, zero jank.</p></article>
-      <article class="card"><h3>Stack</h3><p>WebGL/WASM · ECS · Node/Express · PostgreSQL.</p></article>
-      <article class="card"><h3>Identity</h3><p>Dark neon, gradient glows, glitch micro-interactions.</p></article>
+    <p class="lead">Agency + clarity = immersion. Deterministic systems, sharp feedback, minimal UI latency.</p>
+    <div class="grid-3">
+      <article class="card"><h3>Design</h3><p>Legible systems & fair complexity.</p></article>
+      <article class="card"><h3>Tech</h3><p>WebGL/WASM · ECS · Node · Postgres · CI/CD.</p></article>
+      <article class="card"><h3>Identity</h3><p>Dark neon, disciplined motion, strong typography.</p></article>
     </div>
   </section>
 
-  <!-- The Monuments -->
+  <!-- MONUMENTS -->
   <section id="monuments" class="section container">
     <h2 class="ttl">The Monuments</h2>
-    <div class="works reveal">
-      <article class="work">
-        <div class="media" style="background-image:url('/assets/works/work-1.webp')"></div>
-        <div class="body">
-          <h3>Echoes of the Abyss</h3>
-          <p>Procedural temples with diegetic HUD.</p>
-          <div class="meta"><span>PC</span><span>Unity/DOTS</span><span>2025</span></div>
-          <div class="act"><a class="btn-ghost" href="#" rel="noopener">View</a></div>
-        </div>
-      </article>
-      <article class="work">
-        <div class="media" style="background-image:url('/assets/works/work-2.webp')"></div>
-        <div class="body">
-          <h3>Neon Labyrinth</h3>
-          <p>Grid tactics + synthesis crafting.</p>
-          <div class="meta"><span>PC/Console</span><span>Bevy</span><span>2024</span></div>
-          <div class="act"><button class="btn-ghost connect" data-slug="neon-labyrinth">Connect</button></div>
-        </div>
-      </article>
-      <article class="work">
-        <div class="media" style="background-image:url('/assets/works/work-3.webp')"></div>
-        <div class="body">
-          <h3>Underworld Protocol</h3>
-          <p>Infiltration with systemic dialogs.</p>
-          <div class="meta"><span>PC</span><span>Custom</span><span>2023</span></div>
-          <div class="act"><button class="btn-ghost connect" data-slug="underworld-protocol">Connect</button></div>
-        </div>
-      </article>
+    <p class="lead">Selected worlds carved in code and light.</p>
+    <div class="works">
+      <article class="work"><a class="media" style="background-image:url('./assets/works/work-1.webp')"></a><div class="body"><h3>Echoes of the Abyss</h3><p>Rogue-lite temples & diegetic HUD.</p><div class="meta"><span>PC</span><span>Unity/DOTS</span><span>2025</span></div></div></article>
+      <article class="work"><a class="media" style="background-image:url('./assets/works/work-2.webp')"></a><div class="body"><h3>Neon Labyrinth</h3><p>Grid tactics & synthesis crafting.</p><div class="meta"><span>PC/Console</span><span>Bevy</span><span>2024</span></div></div></article>
+      <article class="work"><a class="media" style="background-image:url('./assets/works/work-3.webp')"></a><div class="body"><h3>Underworld Protocol</h3><p>Infiltration with narrative dice.</p><div class="meta"><span>PC</span><span>Custom</span><span>2023</span></div></div></article>
     </div>
   </section>
 
-  <!-- The Oracle -->
+  <!-- ORACLE -->
   <section id="oracle" class="section container">
     <h2 class="ttl">The Oracle</h2>
-    <form id="contactForm" class="form">
-      <div class="row">
-        <label>Name<input name="name" required></label>
-        <label>Email<input type="email" name="email" required></label>
+    <p class="lead">Send a secure message to the studio.</p>
+
+    <div class="oracle-grid">
+      <!-- LEFT: info panel (email + social usernames) -->
+      <aside class="contact-panel">
+        <div class="panel-card">
+          <h3>Direct Email</h3>
+          <a id="studioEmail" href="mailto:studio@example.com" class="email-chip">studio@example.com</a>
+          <button id="copyEmail" class="btn btn-ghost small">Copy</button>
+          <br>
+          <small class="muted">We typically reply within 1–2 business days.</small>
+        </div>
+
+        <div class="panel-card">
+          <h3>Social</h3>
+          <div class="social-cards">
+            <a id="xCard" class="s-card" target="_blank" rel="noopener">
+              <div class="s-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18M21 3L3 21"/></svg>
+              </div>
+              <div class="s-body">
+                <span class="s-title">X (Twitter)</span>
+                <span id="xUserCard" class="s-handle">@x</span>
+              </div>
+              <span class="s-arrow">›</span>
+            </a>
+
+            <a id="discordCard" class="s-card" target="_blank" rel="noopener">
+              <div class="s-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 7.8a12 12 0 0 0-2.6.7C3.8 10 3 12 3 14c2 2.3 4.3 3.8 6.6 4.8.3-.6.6-1.2.8-1.8-1-.3-1.8-.8-2.6-1.4 2.8 1.8 5.5 1.8 8.2 0-.8.6-1.6 1-2.6 1.4.2.6.5 1.2.8 1.8 2.3-1 4.6-2.5 6.6-4.8 0-2-1-4-2-5.5a12 12 0 0 0-2.6-.7l-.7 1.2A12 12 0 0 0 12 8a12 12 0 0 0-3.9-.9l-.6-1.3Z"/><circle cx="9.5" cy="12.3" r="1"/><circle cx="14.5" cy="12.3" r="1"/></svg>
+              </div>
+              <div class="s-body">
+                <span class="s-title">Discord</span>
+                <span id="discordUserCard" class="s-handle">@discord</span>
+              </div>
+              <span class="s-arrow">›</span>
+            </a>
+
+            <a id="ytCard" class="s-card" target="_blank" rel="noopener">
+              <div class="s-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="3" ry="3"/><path d="M10 9l5 3-5 3z"/></svg>
+              </div>
+              <div class="s-body">
+                <span class="s-title">YouTube</span>
+                <span id="ytUserCard" class="s-handle">@youtube</span>
+              </div>
+              <span class="s-arrow">›</span>
+            </a>
+
+            <a id="gitCard" class="s-card" target="_blank" rel="noopener">
+              <div class="s-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4 1.5-4-2-6-2m12 4v-3.5a3 3 0 0 0-.8-2.3c2.7-.3 5.5-1.3 5.5-6a4.6 4.6 0 0 0-1.2-3.2 4.2 4.2 0 0 0-.1-3.1S16.7 3.6 14 5a11.3 11.3 0 0 0-6 0C5.3 3.6 4.6 3.9 4.6 3.9a4.2 4.2 0 0 0-.1 3.1A4.6 4.6 0 0 0 3.3 10c0 4.7 2.9 5.7 5.6 6a3 3 0 0 0-.8 2.3V21"/></svg>
+              </div>
+              <div class="s-body">
+                <span class="s-title">GitHub</span>
+                <span id="gitUserCard" class="s-handle">@github</span>
+              </div>
+              <span class="s-arrow">›</span>
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- RIGHT: form -->
+      <div class="oracle-card">
+        <form id="contactForm" class="oracle-form" novalidate>
+          <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="row">
+            <div class="field"><input name="name" id="name" required minlength="2" maxlength="120" placeholder=" "><label for="name">Name</label></div>
+            <div class="field"><input type="email" name="email" id="email" required maxlength="180" placeholder=" "><label for="email">Email</label></div>
+          </div>
+          <div class="field"><input name="subject" id="subject" required maxlength="120" placeholder=" "><label for="subject">Subject</label></div>
+          <div class="field"><textarea name="message" id="message" rows="6" required minlength="10" maxlength="5000" placeholder=" "></textarea><label for="message">Message</label></div>
+          <div class="row">
+            <div class="field"><input name="budget" id="budget" placeholder=" "><label for="budget">Budget (optional)</label></div>
+            <div class="field"><input name="timeline" id="timeline" placeholder=" "><label for="timeline">Timeline (optional)</label></div>
+          </div>
+          <button id="sendBtn" class="btn btn-primary block"><span class="btn-text">Send</span><span class="btn-spinner" aria-hidden="true"></span></button>
+          <p id="contactStatus" class="status" role="status" aria-live="polite"></p>
+        </form>
       </div>
-      <label>Message<textarea name="message" rows="5" required></textarea></label>
-      <button class="btn-primary">Send</button>
-      <p id="contactStatus" class="status" role="status"></p>
-    </form>
+    </div>
   </section>
 
-  <footer class="footer">© <span id="year"></span> Tartarus Studio</footer>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container f-row">
+      <div class="brandline">
+        <img src="./assets/logo.svg" class="brand-logo" alt="T"><strong class="brand-name">ARTARUS</strong>
+      </div>
+      <a id="footerEmail" class="link-mail" href="mailto:studio@example.com">studio@example.com</a>
+    </div>
+  </footer>
 
-
-  <script type="module">
-  import { setupUI }   from "/src/ui.js";
-  import { api }       from "/src/api.js";
-
-  setupUI();
-
-  // contact only
-  const f=document.getElementById("contactForm"), s=document.getElementById("contactStatus");
-  f?.addEventListener("submit", async (e)=>{
-    e.preventDefault(); s.textContent="Sending…";
-    const out = await api("/contact",{method:"POST",body:JSON.stringify(Object.fromEntries(new FormData(f)))})
-      .catch(err=>({ok:false,error:err.message}));
-    s.textContent = out.ok ? "Delivered. We will reply soon." : (out.error || "Failed");
-    if(out.ok) f.reset();
-  });
-
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-
+  <script type="module" src="./src/app.js"></script>
 </body>
 </html>

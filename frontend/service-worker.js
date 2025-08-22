@@ -1,12 +1,9 @@
 const CACHE = "tartarus-v1";
 const ASSETS = [
   "/index.html",
-  "/css/styles.css",
-  "/css/loader.css",
-  "/css/animations.css",
-  "/js/main.js",
-  "/js/loader.js",
-  "/js/api.js"
+  "/css/base.css",
+  "/css/theme.css",
+  "/js/main.js"
 ];
 self.addEventListener("install", e=>{
   e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)));
