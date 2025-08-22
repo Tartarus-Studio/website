@@ -1,6 +1,0 @@
-.epic-loader{margin-top:48px;position:relative;width:160px;height:160px}
-.ring{position:absolute;inset:0;border-radius:50%;border:3px solid transparent;animation:spin 2.4s linear infinite}
-.r1{border-top-color:var(--accent)}
-.r2{border-right-color:var(--accent2);inset:10px;animation-duration:2s}
-.r3{border-bottom-color:#6cffc7;inset:20px;animation-duration:1.6s}
-@keyframes spin{to{transform:rotate(360deg)}}

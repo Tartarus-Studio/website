@@ -2,218 +2,111 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Tartarus Studio — Underworld</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0a0a0f" />
-  <link rel="manifest" href="/manifest.webmanifest">
+  <title>Tartarus — Home</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/styles.css" />
-  <link rel="stylesheet" href="./css/loader.css" />
-  <link rel="stylesheet" href="./css/animations.css" />
+  <link rel="stylesheet" href="/style/base.css">
+  <link rel="stylesheet" href="/style/theme.css">
+  <link rel="stylesheet" href="/style/anim.css">
 </head>
 <body>
-    <body>
-  <!-- UNDERWORLD INTRO OVERLAY -->
-  <div id="underworld" class="uw hidden" aria-hidden="true">
-    <div class="uw-bg"></div>
-    <div class="uw-gate">
-      <div class="uw-ring uw-r1"></div>
-      <div class="uw-ring uw-r2"></div>
-      <div class="uw-core">TARTARUS</div>
-      <div class="uw-sub">Descending…</div>
-    </div>
-  </div>
-
   <!-- NAV -->
   <header class="nav">
-    <a href="#gate" class="brand">
-      <img src="./assets/images/logo.svg" alt="Tartarus Studio" class="logo-img" onerror="this.style.display='none'">
-      <span class="logo glitch" data-text="TARTARUS">TARTARUS</span>
-    </a>
+    <a href="/home.html#gate" class="brand"><img src="/assets/logo.svg" class="brand-logo" alt="Tartarus"></a>
     <nav class="menu">
-      <a href="#gate" data-spy>The Gate</a>
-      <a href="#myth" data-spy>The Myth</a>
-      <a href="#monuments" data-spy>The Monuments</a>
-      <a href="#oracle" data-spy>The Oracle</a>
+      <a href="/home.html#myth" data-spy>The Myth</a>
+      <a href="/home.html#monuments" data-spy>The Monuments</a>
+      <a href="/home.html#oracle" data-spy>The Oracle</a>
     </nav>
   </header>
 
-  <!-- SECTION: The Gate (Home) -->
-  <main id="gate" class="hero section">
-    <h1>ENTER THE <span>UNDERWORLD</span></h1>
-    <p class="tagline">Cyberpunk design & code — forged in the depths.</p>
+  <!-- Gate (عنوان الصفحة الرئيسية فقط) -->
+  <section id="gate" class="section hero">
+    <h1>WELCOME TO <span>TARTARUS</span></h1>
+    <p class="tag">World-building • Systemic gameplay • High-performance UI</p>
+  </section>
 
-    <!-- Epic Circular Loader -->
-    <section class="epic-loader" aria-label="Epic Circular Loader">
-      <div class="ring r1"></div>
-      <div class="ring r2"></div>
-      <div class="ring r3"></div>
-    </section>
-
-    <button id="enterBtn" class="btn-primary">ENTER →</button>
-  </main>
-
-  <!-- SECTION: The Myth (About) -->
-  <section id="myth" class="section section-contained">
-      <section class="overview">
-    <div class="ov-grid">
-      <div class="ov-left">
-        <h3>Welcome to Tartarus</h3>
-        <p>
-          We are an underworld forge of game development: systemic design, strong UI, zero-lag performance.
-          This is your gate to our myth, monuments, and oracle.
-        </p>
-        <ul class="ov-sections">
-          <li><a href="#myth">The Myth</a> — who we are</li>
-          <li><a href="#monuments">The Monuments</a> — our worlds</li>
-          <li><a href="#oracle">The Oracle</a> — contact & contracts</li>
-        </ul>
-      </div>
-      <div class="ov-right">
-        <div class="stat"><span data-count="12" class="count">0</span><label>Core Modules</label></div>
-        <div class="stat"><span data-count="3" class="count">0</span><label>Active Titles</label></div>
-        <div class="stat"><span data-count="60" class="count">0</span><label>FPS Target</label></div>
-        <div class="stat"><span data-count="2" class="count">0</span><label>Platforms</label></div>
-      </div>
+  <!-- The Myth -->
+  <section id="myth" class="section container">
+    <h2 class="ttl">The Myth</h2>
+    <p class="lead">Studio focus: readable systems, player agency, and consistent 60+ FPS polish.</p>
+    <div class="grid-3 reveal">
+      <article class="card"><h3>Philosophy</h3><p>Deterministic loops, snappy feedback, zero jank.</p></article>
+      <article class="card"><h3>Stack</h3><p>WebGL/WASM · ECS · Node/Express · PostgreSQL.</p></article>
+      <article class="card"><h3>Identity</h3><p>Dark neon, gradient glows, glitch micro-interactions.</p></article>
     </div>
   </section>
 
-    <h2 class="title">The Myth</h2>
-    <p class="lead">
-      Tartarus Studio is a game development forge blending cinematic art direction, systemic gameplay,
-      and bleeding-edge web tech. We craft worlds with precise mechanics, bold UI, and high-performance code.
-    </p>
-
-    <div class="about-grid">
-      <div class="card">
-        <h3>Philosophy</h3>
-        <p>Player agency, readable systems, and uncompromising performance at 60fps+</p>
-      </div>
-      <div class="card">
-        <h3>Stack</h3>
-        <p>WebGL, WASM, ECS architectures, Node/Express, PostgreSQL, and custom build tooling</p>
-      </div>
-      <div class="card">
-        <h3>Visual Identity</h3>
-        <p>Dark cyberpunk canvas with neon accents, glitch micro-interactions, and layered motion</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION: The Monuments (Our Work / Games) -->
-  <section id="monuments" class="section section-contained">
-    <h2 class="title">The Monuments</h2>
-    <p class="lead">Selected worlds we’ve carved in code and light.</p>
-
-    <div class="grid-works">
-      <!-- Work Card 1 -->
-      <article class="work-card">
-        <div class="work-media" style="background-image:url('./assets/images/work-1.jpg')"></div>
-        <div class="work-body">
+  <!-- The Monuments -->
+  <section id="monuments" class="section container">
+    <h2 class="ttl">The Monuments</h2>
+    <div class="works reveal">
+      <article class="work">
+        <div class="media" style="background-image:url('/assets/works/work-1.webp')"></div>
+        <div class="body">
           <h3>Echoes of the Abyss</h3>
-          <p>Rogue-lite with procedural temples and diegetic HUD.</p>
-          <div class="work-meta">
-            <span>PC</span><span>Unity/DOTS</span><span>2025</span>
-          </div>
-          <a class="btn-ghost" href="#" target="_blank" rel="noopener">View</a>
-          <button class="btn-primary connect-btn" data-slug="echoes-of-the-abyss">Connect</button>
+          <p>Procedural temples with diegetic HUD.</p>
+          <div class="meta"><span>PC</span><span>Unity/DOTS</span><span>2025</span></div>
+          <div class="act"><a class="btn-ghost" href="#" rel="noopener">View</a></div>
         </div>
       </article>
-
-      <!-- Work Card 2 -->
-      <article class="work-card">
-        <div class="work-media" style="background-image:url('./assets/images/work-2.jpg')"></div>
-        <div class="work-body">
+      <article class="work">
+        <div class="media" style="background-image:url('/assets/works/work-2.webp')"></div>
+        <div class="body">
           <h3>Neon Labyrinth</h3>
-          <p>Grid-based tactics with synthesis crafting and fog-of-war.</p>
-          <div class="work-meta">
-            <span>PC/Console</span><span>Bevy</span><span>2024</span>
-          </div>
-          <a class="btn-ghost" href="#" target="_blank" rel="noopener">View</a>
-          <button class="btn-primary connect-btn" data-slug="echoes-of-the-abyss">Connect</button>
-
+          <p>Grid tactics + synthesis crafting.</p>
+          <div class="meta"><span>PC/Console</span><span>Bevy</span><span>2024</span></div>
+          <div class="act"><button class="btn-ghost connect" data-slug="neon-labyrinth">Connect</button></div>
         </div>
       </article>
-
-      <!-- Work Card 3 -->
-      <article class="work-card">
-        <div class="work-media" style="background-image:url('./assets/images/work-3.jpg')"></div>
-        <div class="work-body">
+      <article class="work">
+        <div class="media" style="background-image:url('/assets/works/work-3.webp')"></div>
+        <div class="body">
           <h3>Underworld Protocol</h3>
-          <p>Narrative infiltration with systemic dialogs and die rolls.</p>
-          <div class="work-meta">
-            <span>PC</span><span>Custom Engine</span><span>2023</span>
-          </div>
-          <a class="btn-ghost" href="#" target="_blank" rel="noopener">View</a>
-          <button class="btn-primary connect-btn" data-slug="echoes-of-the-abyss">Connect</button>
+          <p>Infiltration with systemic dialogs.</p>
+          <div class="meta"><span>PC</span><span>Custom</span><span>2023</span></div>
+          <div class="act"><button class="btn-ghost connect" data-slug="underworld-protocol">Connect</button></div>
         </div>
       </article>
     </div>
   </section>
 
-  <!-- SECTION: The Oracle (Contact) -->
-  <section id="oracle" class="section section-contained">
-    <h2 class="title">The Oracle</h2>
-    <p class="lead">Speak your query. The code will answer.</p>
-
-    <form id="contactForm" class="contact-form" novalidate>
+  <!-- The Oracle -->
+  <section id="oracle" class="section container">
+    <h2 class="ttl">The Oracle</h2>
+    <form id="contactForm" class="form">
       <div class="row">
-        <label>
-          Name
-          <input type="text" name="name" required placeholder="Your name">
-        </label>
-        <label>
-          Email
-          <input type="email" name="email" required placeholder="you@domain.com">
-        </label>
+        <label>Name<input name="name" required></label>
+        <label>Email<input type="email" name="email" required></label>
       </div>
-      <label>
-        Message
-        <textarea name="message" rows="5" required placeholder="Tell us about your world…"></textarea>
-      </label>
-      <button type="submit" class="btn-primary">Send to the Oracle</button>
-      <p id="contactStatus" class="status" role="status" aria-live="polite"></p>
+      <label>Message<textarea name="message" rows="5" required></textarea></label>
+      <button class="btn-primary">Send</button>
+      <p id="contactStatus" class="status" role="status"></p>
     </form>
   </section>
 
-  <footer class="footer">© <span id="year"></span> Tartarus Studio — All rights reserved.</footer>
+  <footer class="footer">© <span id="year"></span> Tartarus Studio</footer>
 
-  <script src="./js/loader.js" defer></script>
-  <script src="./js/main.js" defer></script>
-  <script src="./js/api.js" defer></script>
-  <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("/service-worker.js");
-    }
-  </script>
 
-  <!-- AUTH MODAL -->
-<div id="authModal" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true">
-  <div class="modal-card">
-    <button class="modal-close" data-close>✕</button>
-    <h3>Access the Underworld</h3>
-    <div class="tabs">
-      <button data-tab="login" class="tab active">Login</button>
-      <button data-tab="signup" class="tab">Signup</button>
-    </div>
+  <script type="module">
+  import { setupUI }   from "/src/ui.js";
+  import { api }       from "/src/api.js";
 
-    <form id="loginForm" class="auth-form" autocomplete="on">
-      <label>Email<input name="email" type="email" required></label>
-      <label>Password<input name="password" type="password" required></label>
-      <button class="btn-primary" type="submit">Login</button>
-      <p class="status" id="loginStatus"></p>
-    </form>
+  setupUI();
 
-    <form id="signupForm" class="auth-form hidden" autocomplete="on">
-      <label>Name<input name="name" type="text" required></label>
-      <label>Email<input name="email" type="email" required></label>
-      <label>Password<input name="password" type="password" required></label>
-      <button class="btn-primary" type="submit">Create account</button>
-      <p class="status" id="signupStatus"></p>
-    </form>
-  </div>
-</div>
+  // contact only
+  const f=document.getElementById("contactForm"), s=document.getElementById("contactStatus");
+  f?.addEventListener("submit", async (e)=>{
+    e.preventDefault(); s.textContent="Sending…";
+    const out = await api("/contact",{method:"POST",body:JSON.stringify(Object.fromEntries(new FormData(f)))})
+      .catch(err=>({ok:false,error:err.message}));
+    s.textContent = out.ok ? "Delivered. We will reply soon." : (out.error || "Failed");
+    if(out.ok) f.reset();
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
