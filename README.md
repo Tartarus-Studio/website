@@ -142,4 +142,4 @@ This project is licensed under the ISC License.
 ---
 
 ## Contact
-For questions or support, reach out at [your-email@example.com].
+For questions or support, reach out at [dev@tartarus.studio].
