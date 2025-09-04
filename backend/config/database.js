@@ -1,4 +1,3 @@
-require("dotenv").config();
 const { Pool } = require("pg");
 
 const pool = new Pool({
@@ -7,13 +6,8 @@ const pool = new Pool({
   database: process.env.DB_NAME,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  max: 10,          // connection pooling
-  idleTimeoutMillis: 30000
-});
-
-pool.on("error", (err) => {
-  console.error("Unexpected PG error", err);
-  process.exit(1);
+  max: 10,             // connection pooling
+  idleTimeoutMillis: 10000
 });
 
 module.exports = { pool };

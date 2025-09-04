@@ -1,23 +1,59 @@
 const express = require("express");
 const { z } = require("zod");
-const { createContact } = require("../models/Contact");
+const nodemailer = require("nodemailer");
+const { pool } = require("../config/database");
 
 const router = express.Router();
 
 const ContactSchema = z.object({
   name: z.string().min(2).max(120),
   email: z.string().email().max(180),
-  message: z.string().min(5).max(5000)
+  subject: z.string().min(2).max(120),
+  message: z.string().min(10).max(5000),
+  budget: z.string().max(80).optional().nullable(),
+  timeline: z.string().max(80).optional().nullable(),
+  website: z.string().optional().nullable() // honeypot
+});
+
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST,
+  port: Number(process.env.SMTP_PORT || 587),
+  secure: String(process.env.SMTP_SECURE || "false") === "true",
+  auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS }
 });
 
 router.post("/", async (req, res) => {
   try {
     const parsed = ContactSchema.safeParse(req.body);
-    if (!parsed.success) {
-      return res.status(400).json({ error: "Invalid payload", issues: parsed.error.issues });
-    }
-    const saved = await createContact(parsed.data);
-    res.status(201).json({ ok: true, contact: saved });
+    if (!parsed.success) return res.status(400).json({ error: "Invalid payload" });
+    const data = parsed.data;
+    if (data.website) return res.json({ ok: true }); // bot trapped
+
+    // Persist to DB
+    await pool.query(
+      `INSERT INTO contacts (name,email,subject,message,budget,timeline)
+       VALUES ($1,$2,$3,$4,$5,$6)`,
+      [data.name, data.email, data.subject, data.message, data.budget || null, data.timeline || null]
+    );
+
+    // Send mail
+    const info = await transporter.sendMail({
+      from: `"Tartarus Web" <${process.env.SMTP_USER}>`,
+      to: process.env.STUDIO_MAIL_TO,
+      subject: `Oracle: ${data.subject}`,
+      replyTo: `${data.name} <${data.email}>`,
+      text:
+`From: ${data.name} <${data.email}>
+Budget: ${data.budget || "-"}  Timeline: ${data.timeline || "-"}
+
+${data.message}`,
+      html:
+`<p><strong>From:</strong> ${data.name} &lt;${data.email}&gt;</p>
+<p><strong>Budget:</strong> ${data.budget || "-"} &nbsp; | &nbsp; <strong>Timeline:</strong> ${data.timeline || "-"}</p>
+<p style="white-space:pre-line">${data.message}</p>`
+    });
+
+    res.status(201).json({ ok: true, id: info.messageId });
   } catch (e) {
     console.error(e);
     res.status(500).json({ error: "server error" });
