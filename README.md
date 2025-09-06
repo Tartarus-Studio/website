@@ -153,4 +153,4 @@ vercel
 ---
 
 ## Contact
-For questions or support, reach out at studio@tartarus.dev
+For questions or support, reach out at dev@tartarus.studio
