@@ -55,6 +55,7 @@ class TartarusApp {
 
     // Window events with throttling
     window.addEventListener('scroll', () => this.throttle(() => this.handleScroll(), this.config.throttleDelay));
+    window.addEventListener('scroll', () => this.updateActiveNavLink()); // Immediate response for active links
     window.addEventListener('resize', () => this.throttle(() => this.handleResize(), this.config.throttleDelay));
     
     // Page visibility for performance optimization
@@ -123,6 +124,25 @@ class TartarusApp {
     this.navbar = navbar;
     this.navProgress = navProgress;
     this.navLinks = navLinks;
+    
+    // Set initial active state for home
+    this.setInitialActiveLink();
+  }
+
+  /**
+   * Set initial active link on page load
+   */
+  setInitialActiveLink() {
+    if (!this.navLinks) return;
+    
+    // Remove all active states first
+    this.navLinks.forEach(link => link.classList.remove('active'));
+    
+    // Set home as active by default
+    const homeLink = document.querySelector('.nav-link[href="#home"]');
+    if (homeLink) {
+      homeLink.classList.add('active');
+    }
   }
 
   /**
@@ -281,25 +301,59 @@ class TartarusApp {
     if (!this.navLinks) return;
 
     const sections = document.querySelectorAll('section[id]');
-    const scrollPos = window.pageYOffset + this.config.scrollOffset + 50;
-
-    let activeSection = '';
+    const scrollPos = window.pageYOffset;
+    const windowHeight = window.innerHeight;
+    
+    let activeSection = 'home'; // Default to home
+    let closestSection = null;
+    let closestDistance = Infinity;
 
     sections.forEach(section => {
       const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-
-      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+      const sectionBottom = sectionTop + section.offsetHeight;
+      const sectionMiddle = sectionTop + (section.offsetHeight / 2);
+      
+      // Check if section is in viewport
+      const inViewport = (sectionTop <= scrollPos + windowHeight) && (sectionBottom >= scrollPos);
+      
+      if (inViewport) {
+        const distanceFromCenter = Math.abs(sectionMiddle - (scrollPos + windowHeight / 2));
+        
+        if (distanceFromCenter < closestDistance) {
+          closestDistance = distanceFromCenter;
+          closestSection = section.getAttribute('id');
+        }
+      }
+      
+      // Alternative check: if scroll position is within section bounds
+      if (scrollPos >= sectionTop - 100 && scrollPos < sectionBottom - 100) {
         activeSection = section.getAttribute('id');
       }
     });
 
+    // Use closest section if found, otherwise use the traditional method
+    if (closestSection) {
+      activeSection = closestSection;
+    }
+
+    // If we're at the very top, ensure home is active
+    if (scrollPos < 50) {
+      activeSection = 'home';
+    }
+
     // Update nav links
     this.navLinks.forEach(link => {
       const href = link.getAttribute('href');
-      const isActive = href === `#${activeSection}`;
+      const targetSection = href ? href.replace('#', '') : '';
+      const isActive = targetSection === activeSection;
       
-      link.classList.toggle('active', isActive);
+      // Remove active class from all links first
+      link.classList.remove('active');
+      
+      // Add active class to the current section
+      if (isActive) {
+        link.classList.add('active');
+      }
     });
   }
 
