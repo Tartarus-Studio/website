@@ -1,6 +1,6 @@
 # Tartarus Studio Website
 
-A fully customizable cyberpunk-themed website for a game development studio. This project features a modern frontend with neon aesthetics and a robust backend API, all built with pure HTML, CSS, JavaScript, and Node.js/Express.
+A modern cyberpunk-themed frontend website for a game development studio. This project features a sleek, responsive design with neon aesthetics built with pure HTML, CSS, and JavaScript.
 
 ---
 
@@ -9,8 +9,6 @@ A fully customizable cyberpunk-themed website for a game development studio. Thi
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
 - [Frontend Customization](#frontend-customization)
-- [Backend API](#backend-api)
-- [Environment Variables](#environment-variables)
 - [Scripts](#scripts)
 - [Project Structure](#project-structure)
 - [Accessibility](#accessibility)
@@ -21,104 +19,95 @@ A fully customizable cyberpunk-themed website for a game development studio. Thi
 
 ## Features
 - **Cyberpunk Aesthetic:** Neon colors, glitch effects, scan lines, and animated particles
-- **Customizable Navigation:** SYSTEM, DATA, PROJECTS, CONNECT sections
-- **Responsive Design:** Works on desktop and mobile
+- **Customizable Navigation:** HOME, ABOUT, PROJECTS, CONTACT sections
+- **Responsive Design:** Works perfectly on desktop and mobile devices
 - **Accessibility:** ARIA roles, keyboard navigation, reduced motion support
-- **Backend API:** Express server with email functionality
-- **Environment Config:** Easily switch between development and production
+- **Pure Frontend:** No backend dependencies, easy to deploy anywhere
+- **Live Reload:** Development server with automatic refresh
 
 ---
 
 ## Tech Stack
-- **Frontend:** HTML, CSS, JavaScript (no external libraries)
-- **Backend:** Node.js, Express, Nodemailer
-- **Dev Tools:** live-server, nodemon, concurrently
+- **Frontend:** HTML5, CSS3, JavaScript (ES6+)
+- **Dev Tools:** live-server for development
+- **Deployment:** Static hosting ready (GitHub Pages, Netlify, Vercel, etc.)
 
 ---
 
 ## Getting Started
 
 ### Prerequisites
-- Node.js >= 18.x
+- Node.js >= 18.x (for development server only)
 - npm >= 9.x
-- SMTP email provider (Gmail, etc.)
 
 ### Installation
 ```bash
 npm install
 ```
 
-### Running the Frontend
-```bash
-npx live-server ./frontend --open=index.html
-```
-
-### Running the Backend
+### Development Server
 ```bash
 npm run dev
+# or
+npm start
 ```
+
+This will start a live-reload development server at `http://localhost:3000`
+
+### Static Deployment
+Since this is a frontend-only application, you can deploy it to any static hosting service:
+- **GitHub Pages**: Push to a repository and enable Pages
+- **Netlify**: Drag and drop the project folder
+- **Vercel**: Connect your repository for automatic deployments
+- **Traditional hosting**: Upload files to any web server
 
 ---
 
 ## Frontend Customization
-- Edit `frontend/index.html` for content and navigation
-- Modify styles in `frontend/style/style.css` for colors, fonts, and effects
-- Update scripts in `frontend/src/app.js` for interactivity
-
----
-
-## Backend API
-- Main entry: `backend/server.js`
-- Routes: `backend/routes/`
-- Contact form with email delivery
-- Health check endpoint
-
----
-
-## Environment Variables
-Copy `.env.example` to `.env` and fill in your email settings:
-```
-STUDIO_MAIL_TO=studio@yourdomain.com
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USER=your-email@gmail.com
-SMTP_PASS=your-app-password
-```
+- Edit `index.html` for content and navigation
+- Modify styles in `style/styles.css` for colors, fonts, and effects
+- Update scripts in `src/app.js` for interactivity
+- Replace assets in `assets/` folder with your own logos and images
 
 ---
 
 ## Scripts
-- `npm start` - Run backend in production mode
-- `npm run dev` - Run backend with nodemon for development
-- `npx live-server ./frontend` - Run frontend dev server
+- `npm start` - Start development server
+- `npm run dev` - Start development server with live reload
+- `npm run serve` - Serve the application
+- `npm run build` - Build check (frontend-only, no build needed)
 
 ---
 
 ## Project Structure
 ```
-backend/         # Express server and API
-  routes/        # API endpoints
-  server.js      # Main server file
-frontend/        # HTML, CSS, JS for website
-  index.html     # Main entry point
-  style/         # CSS styles
-  src/           # JS scripts
-  assets/        # Images, fonts, etc.
-.env             # Environment configuration
-package.json     # Project metadata and scripts
+index.html       # Main entry point
+style/           # CSS styles and themes
+src/             # JavaScript functionality
+assets/          # Images, logos, and static assets
+manifest.webmanifest # PWA configuration
+service-worker.js     # Service worker for PWA
+  style/           # CSS styles and themes
+  src/             # JavaScript functionality  
+  assets/          # Images, logos, static files
+package.json       # Project metadata and scripts
+manifest.webmanifest # Progressive Web App config
+service-worker.js    # Service worker for PWA
 ```
 
 ---
 
 ## Accessibility
 - ARIA roles and labels
-- Keyboard navigation
-- Reduced motion support
+- Keyboard navigation support
+- Reduced motion preferences respected
+- High contrast color schemes
+- Screen reader compatibility
 
 ---
 
 ## Contributing
-1. Fork the repo
+1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/YourFeature`)
 3. Commit your changes (`git commit -am 'Add new feature'`)
 4. Push to the branch (`git push origin feature/YourFeature`)
@@ -127,17 +116,41 @@ package.json     # Project metadata and scripts
 ---
 
 ## License
-This project is licensed under the ISC License.
+This project is licensed under the MIT License.
 
 ---
 
 ## Customization Tips
-- Change color palette in CSS for different themes
-- Swap fonts in `style.css` for a new look
-- Add new API routes in `backend/routes/`
-- Configure email templates in `backend/routes/contact.js`
+- **Color Themes**: Modify CSS custom properties in `style/styles.css`
+- **Content**: Update sections in `index.html` with your own information
+- **Assets**: Replace images in `assets/` with your own branding
+- **Animations**: Adjust CSS animations and transitions for your preferred feel
+- **Progressive Web App**: Customize `manifest.webmanifest` for your brand
+
+---
+
+## Deployment Examples
+
+### GitHub Pages
+```bash
+# Push to main branch, enable Pages in repository settings
+git push origin main
+```
+
+### Netlify
+```bash
+# Drag and drop project folder to Netlify dashboard
+# Or connect your Git repository for automatic deploys
+```
+
+### Vercel
+```bash
+# Install Vercel CLI and deploy
+npm i -g vercel
+vercel
+```
 
 ---
 
 ## Contact
-For questions or support, reach out at [dev@tartarus.studio].
+For questions or support, reach out at studio@tartarus.dev
