@@ -15,6 +15,7 @@ class TartarusApp {
       socialLinks: {
         twitter: { url: 'https://twitter.com/tartarus_studio', handle: '@tartarus_studio' },
         discord: { url: 'https://discord.gg/tartarus', handle: 'tartarus_community' },
+        youtube: { url: 'https://youtube.com/@TartarusStudio', handle: '@TartarusStudio' },
         github: { url: 'https://github.com/tartarus-studio', handle: 'tartarus-studio' }
       },
       email: 'studio@tartarus.dev',

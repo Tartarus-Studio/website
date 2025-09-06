@@ -24,14 +24,14 @@ A fully customizable cyberpunk-themed website for a game development studio. Thi
 - **Customizable Navigation:** SYSTEM, DATA, PROJECTS, CONNECT sections
 - **Responsive Design:** Works on desktop and mobile
 - **Accessibility:** ARIA roles, keyboard navigation, reduced motion support
-- **Backend API:** Express server with PostgreSQL integration
+- **Backend API:** Express server with email functionality
 - **Environment Config:** Easily switch between development and production
 
 ---
 
 ## Tech Stack
 - **Frontend:** HTML, CSS, JavaScript (no external libraries)
-- **Backend:** Node.js, Express, PostgreSQL
+- **Backend:** Node.js, Express, Nodemailer
 - **Dev Tools:** live-server, nodemon, concurrently
 
 ---
@@ -41,7 +41,7 @@ A fully customizable cyberpunk-themed website for a game development studio. Thi
 ### Prerequisites
 - Node.js >= 18.x
 - npm >= 9.x
-- PostgreSQL (for backend)
+- SMTP email provider (Gmail, etc.)
 
 ### Installation
 ```bash
@@ -70,21 +70,19 @@ npm run dev
 ## Backend API
 - Main entry: `backend/server.js`
 - Routes: `backend/routes/`
-- Models: `backend/models/`
-- Config: `backend/config/`
-- Database schema: `database/schema.sql`
+- Contact form with email delivery
+- Health check endpoint
 
 ---
 
 ## Environment Variables
-Copy `.env.example` to `.env` and fill in your database and mail settings:
+Copy `.env.example` to `.env` and fill in your email settings:
 ```
-DB_HOST=localhost
-DB_USER=youruser
-DB_NAME=yourdb
-DB_PASSWORD=yourpassword
-MAIL_USER=yourmail@example.com
-MAIL_PASS=yourmailpassword
+STUDIO_MAIL_TO=studio@yourdomain.com
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-app-password
 ```
 
 ---
@@ -93,20 +91,20 @@ MAIL_PASS=yourmailpassword
 - `npm start` - Run backend in production mode
 - `npm run dev` - Run backend with nodemon for development
 - `npx live-server ./frontend` - Run frontend dev server
-- `npm run db:reset` - Reset database schema
 
 ---
 
 ## Project Structure
 ```
 backend/         # Express server and API
+  routes/        # API endpoints
+  server.js      # Main server file
 frontend/        # HTML, CSS, JS for website
   index.html     # Main entry point
   style/         # CSS styles
   src/           # JS scripts
   assets/        # Images, fonts, etc.
-database/        # SQL schema and migrations
-.env.example     # Example environment config
+.env             # Environment configuration
 package.json     # Project metadata and scripts
 ```
 
@@ -137,7 +135,7 @@ This project is licensed under the ISC License.
 - Change color palette in CSS for different themes
 - Swap fonts in `style.css` for a new look
 - Add new API routes in `backend/routes/`
-- Extend database schema in `database/schema.sql`
+- Configure email templates in `backend/routes/contact.js`
 
 ---
 

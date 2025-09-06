@@ -1,7 +1,6 @@
 const express = require("express");
 const { z } = require("zod");
 const nodemailer = require("nodemailer");
-const { pool } = require("../config/database");
 
 const router = express.Router();
 
@@ -28,13 +27,6 @@ router.post("/", async (req, res) => {
     if (!parsed.success) return res.status(400).json({ error: "Invalid payload" });
     const data = parsed.data;
     if (data.website) return res.json({ ok: true }); // bot trapped
-
-    // Persist to DB
-    await pool.query(
-      `INSERT INTO contacts (name,email,subject,message,budget,timeline)
-       VALUES ($1,$2,$3,$4,$5,$6)`,
-      [data.name, data.email, data.subject, data.message, data.budget || null, data.timeline || null]
-    );
 
     // Send mail
     const info = await transporter.sendMail({
