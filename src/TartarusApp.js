@@ -9,6 +9,8 @@ import { NavigationManager } from './modules/NavigationManager.js';
 import { SocialManager } from './modules/SocialManager.js';
 import { EmailManager } from './modules/EmailManager.js';
 import { AnimationManager } from './modules/AnimationManager.js';
+import { ProjectsManager } from './modules/ProjectsManager.js';
+import { MetaManager } from './modules/MetaManager.js';
 import { Utils } from './modules/Utils.js';
 
 export class TartarusApp {
@@ -21,6 +23,8 @@ export class TartarusApp {
     this.socialManager = new SocialManager();
     this.emailManager = new EmailManager();
     this.animationManager = new AnimationManager();
+    this.projectsManager = new ProjectsManager(this.translationManager);
+    this.metaManager = new MetaManager();
     
     // Bind methods for event listeners
     this.onScroll = Utils.throttle(this.handleScroll.bind(this), APP_CONFIG.SCROLL_THROTTLE_DELAY);
@@ -66,6 +70,11 @@ export class TartarusApp {
       this.socialManager.init();
       this.emailManager.init();
       this.animationManager.init();
+      this.projectsManager.init();
+      this.metaManager.init();
+      
+      // Update email display
+      this.metaManager.updateEmailDisplay();
       
       // Apply initial language
       this.translationManager.applyLanguage(this.translationManager.getCurrentLanguage());
@@ -91,6 +100,8 @@ export class TartarusApp {
       const currentLang = this.translationManager.getCurrentLanguage();
       const newLanguage = currentLang === 'en' ? 'ar' : 'en';
       this.translationManager.switchLanguage(newLanguage);
+      // Update projects when language changes
+      this.projectsManager.updateProjectsLanguage();
     });
   }
 
@@ -99,7 +110,6 @@ export class TartarusApp {
    */
   handleScroll() {
     this.navigationManager.updateNavbar();
-    this.navigationManager.updateProgress();
     this.navigationManager.updateActiveNavLink();
     this.animationManager.applyParallax();
   }

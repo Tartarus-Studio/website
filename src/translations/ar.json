@@ -50,8 +50,9 @@
     "responseTime": "نرد عادة خلال 24 ساعة",
     "socialTitle": "تابع رحلتنا",
     "socialPlatforms": {
-      "twitter": "تويتر / إكس",
-      "discord": "ديسكورد",
+      "x": "إكس",
+      "instagram": "إنستغرام",
+      "discord": "ديسكورد", 
       "github": "جيت هاب"
     }
   },

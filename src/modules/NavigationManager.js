@@ -21,7 +21,6 @@ export class NavigationManager {
     this.navbar = document.getElementById(APP_CONFIG.ELEMENT_IDS.NAVBAR);
     this.navMenu = document.getElementById(APP_CONFIG.ELEMENT_IDS.NAV_MENU);
     this.navToggle = document.getElementById(APP_CONFIG.ELEMENT_IDS.NAV_TOGGLE);
-    this.navProgress = document.getElementById(APP_CONFIG.ELEMENT_IDS.NAV_PROGRESS);
     this.navLinks = document.querySelectorAll('.nav-link');
   }
 
@@ -117,16 +116,8 @@ export class NavigationManager {
   }
 
   /**
-   * Update scroll progress bar
+   * Progress bar functionality removed - no longer needed
    */
-  updateProgress() {
-    if (!this.navProgress) return;
-    
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = Math.min(100, (scrollTop / (docHeight || 1)) * 100);
-    this.navProgress.style.width = `${progress}%`;
-  }
 
   /**
    * Update active link based on scroll position

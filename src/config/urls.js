@@ -3,18 +3,28 @@
  * Centralized management of all URLs and endpoints
  */
 
+import { SITE_INFO, FULL_URLS } from './site.js';
+
 export const SOCIAL_URLS = {
-  twitter: {
-    url: 'https://x.com/tartarus_studio',
-    handle: '@tartarus_studio'
+  x: {
+    url: FULL_URLS.X,
+    handle: `@${SITE_INFO.SOCIAL_HANDLES.X}`,
+    displayName: 'X'
+  },
+  instagram: {
+    url: FULL_URLS.INSTAGRAM,
+    handle: `@${SITE_INFO.SOCIAL_HANDLES.INSTAGRAM}`,
+    displayName: 'Instagram'
   },
   discord: {
-    url: 'https://discord.gg/tartarus-studio',
-    handle: 'tartarus-studio'
+    url: FULL_URLS.DISCORD,
+    handle: SITE_INFO.SOCIAL_HANDLES.DISCORD,
+    displayName: 'Discord'
   },
   github: {
-    url: 'https://github.com/tartarus-studio',
-    handle: 'tartarus-studio'
+    url: FULL_URLS.GITHUB,
+    handle: SITE_INFO.SOCIAL_HANDLES.GITHUB,
+    displayName: 'GitHub'
   }
 };
 
@@ -34,17 +44,8 @@ export const API_ENDPOINTS = {
 export const ASSET_URLS = {
   // Images
   IMAGES: {
-    LOGO: './assets/logo.svg',
-    LOGO_MONO: './assets/logo-mono.svg',
-    PROJECT_IMAGE: './assets/works/work-1.webp'
-  },
-  
-  // Icons
-  ICONS: {
-    ICON_192: './assets/icons/icon-192x192.png',
-    ICON_512: './assets/icons/icon-512x512.png',
-    ICON_192_SVG: './assets/icons/icon-192x192.svg',
-    ICON_512_SVG: './assets/icons/icon-512x512.svg'
+    LOGO: SITE_INFO.LOGO_PATH,
+    LOGO_MONO: SITE_INFO.LOGO_MONO_PATH
   },
   
   // Fonts
@@ -59,14 +60,11 @@ export const EXTERNAL_LINKS = {
   GITHUB_PAGES: 'https://pages.github.com',
   NETLIFY: 'https://netlify.com',
   VERCEL: 'https://vercel.com',
-  
-  // Game development resources
-  UNITY: 'https://unity.com',
-  UNREAL: 'https://unrealengine.com'
+
 };
 
 export const CONTACT_INFO = {
-  EMAIL: 'studio@tartarus.dev',
-  RESPONSE_TIME: '24 hours',
-  TIMEZONE: 'UTC+0'
+  EMAIL: SITE_INFO.EMAIL,
+  RESPONSE_TIME: SITE_INFO.RESPONSE_TIME,
+  TIMEZONE: SITE_INFO.TIMEZONE
 };

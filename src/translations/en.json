@@ -50,7 +50,8 @@
     "responseTime": "We typically respond within 24 hours",
     "socialTitle": "Follow Our Journey",
     "socialPlatforms": {
-      "twitter": "Twitter / X",
+      "x": "X",
+      "instagram": "Instagram",
       "discord": "Discord", 
       "github": "GitHub"
     }

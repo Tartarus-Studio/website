@@ -225,6 +225,12 @@ body {
   padding: 0 var(--space-md);
 }
 
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
 .brand {
   display: flex;
   align-items: center;
@@ -316,14 +322,7 @@ body {
   transition: all var(--transition-normal);
 }
 
-.nav-progress {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 2px;
-  background: var(--gradient-primary);
-  transition: width var(--transition-fast);
-}
+/* Progress bar removed - was not needed */
 
 /* ===========================
    BUTTONS
@@ -649,13 +648,46 @@ body {
 }
 
 .projects-grid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: var(--space-lg);
-  max-width: 100rem;
-  margin: 0 auto;
+  display: grid;
+  gap: 2rem;
+  padding: 0 1rem;
+  transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/* Dynamic layouts based on project count */
+.projects-count-1 {
+  place-items: center;
+}
+
+.projects-count-2 {
+  place-items: center;
+}
+
+.projects-count-1 .project-card,
+.projects-count-2 .project-card {
+  max-width: 450px;
+  width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+    max-width: 100% !important;
+  }
+  
+  .projects-count-1 .project-card,
+  .projects-count-2 .project-card {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-grid {
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
 }
 
 .project-card {
@@ -665,13 +697,13 @@ body {
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
   backdrop-filter: blur(12px);
-  width: 36rem;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
   position: relative;
-  margin: 0 auto;
   z-index: 2;
   display: flex;
   flex-direction: column;
+  min-height: 500px;
+  width: 100%;
 }
 
 /* Modern glow effect behind the card */
@@ -1267,8 +1299,13 @@ body {
   flex-shrink: 0;
 }
 
-.social-icon.twitter {
-  background: linear-gradient(135deg, #1da1f2, #0d8bd9);
+.social-icon.x {
+  background: linear-gradient(135deg, #000000, #333333);
+  color: white;
+}
+
+.social-icon.instagram {
+  background: linear-gradient(135deg, #e1306c, #fd1d1d, #f56040, #f77737, #fcaf45, #ffdc80);
   color: white;
 }
 
@@ -1716,35 +1753,31 @@ body {
 .language-switcher {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--border-radius);
-  padding: 0.8rem 1.2rem;
-  color: var(--text-secondary);
+  justify-content: center;
+  min-width: 60px;
+  height: 40px;
+  background: rgba(220, 20, 60, 0.1);
+  border: 1px solid rgba(220, 20, 60, 0.2);
+  border-radius: 8px;
+  color: var(--color-primary);
   cursor: pointer;
   transition: all var(--transition-normal);
-  font-size: 1.4rem;
-  font-weight: 500;
+  font-size: 1.3rem;
+  font-weight: 600;
   text-decoration: none;
 }
 
 .language-switcher:hover {
-  background: rgba(220, 20, 60, 0.1);
-  border-color: rgba(220, 20, 60, 0.3);
-  color: var(--color-primary);
+  background: rgba(220, 20, 60, 0.2);
+  border-color: rgba(220, 20, 60, 0.4);
   transform: translateY(-1px);
-}
-
-.language-icon {
-  width: 1.6rem;
-  height: 1.6rem;
-  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(220, 20, 60, 0.2);
 }
 
 .language-text {
   font-size: 1.3rem;
   white-space: nowrap;
+  font-weight: 600;
 }
 
 /* ===========================
@@ -2027,4 +2060,17 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.3);
+}
+
+/* Mobile navigation actions */
+@media (max-width: 768px) {
+  .nav-actions {
+    gap: var(--space-sm);
+  }
+  
+  .language-switcher {
+    min-width: 50px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
 }
