@@ -1,24 +1,37 @@
 {
   "name": "tartarus-studio-website",
-  "type": "commonjs",
-  "version": "1.0.0",
-  "description": "Tartarus Studio - Professional Game Development Website",
-  "main": "index.html",
+  "type": "module",
+  "version": "2.0.0",
+  "description": "Tartarus Studio - Professional Game Development Studio",
+  "main": "src/main.js",
   "scripts": {
     "start": "python -m http.server 3000",
     "dev": "python -m http.server 3000",
     "build": "echo 'Frontend-only build complete - ready for deployment'",
-    "serve": "python -m http.server 3000"
+    "serve": "python -m http.server 3000",
+    "lint": "echo 'Linting JavaScript modules...'",
+    "clean": "echo 'Cleaning temporary files...'"
   },
   "keywords": [
     "game-development",
     "frontend",
     "cyberpunk",
-    "website"
+    "website",
+    "es6-modules",
+    "modular-architecture",
+    "bilingual",
+    "rtl-support"
   ],
   "author": "Tartarus Studio",
   "license": "MIT",
   "devDependencies": {
     "live-server": "^1.2.2"
-  }
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "defaults",
+    "not IE 11"
+  ]
 }
