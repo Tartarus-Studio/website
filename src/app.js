@@ -49,7 +49,6 @@ class TartarusApp {
       this.setupNavigation();
       this.setupSocialLinks();
       this.setupEmailCopy();
-      this.setupContactForm();
       this.initializeAnimations();
       this.setupImageErrorHandling();
 
@@ -201,125 +200,6 @@ class TartarusApp {
     }
   }
 
-  /* ========= Contact Form ========= */
-  setupContactForm() {
-    const form = document.getElementById('contactForm');
-    const submitBtn = form?.querySelector('.submit-btn');
-    const formStatus = document.getElementById('formStatus');
-    
-    if (!form || !submitBtn || !formStatus) return;
-
-    // Enable submit button when form is valid
-    const validateForm = () => {
-      const formData = new FormData(form);
-      const name = formData.get('name')?.trim();
-      const email = formData.get('email')?.trim();
-      const subject = formData.get('subject');
-      const message = formData.get('message')?.trim();
-      
-      const isValid = name && email && subject && message && 
-                     this.isValidEmail(email) && message.length >= 10;
-      
-      submitBtn.disabled = !isValid;
-      return isValid;
-    };
-
-    // Add input listeners for real-time validation
-    form.addEventListener('input', validateForm);
-    form.addEventListener('change', validateForm);
-
-    // Handle form submission
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      if (!validateForm()) return;
-
-      const formData = new FormData(form);
-      const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        subject: formData.get('subject'),
-        message: formData.get('message'),
-        timestamp: new Date().toISOString()
-      };
-
-      // Track form submission
-      if (window.analytics) {
-        window.analytics.track('contact_form_submit', {
-          subject: data.subject
-        });
-      }
-
-      await this.submitContactForm(data, submitBtn, formStatus, form);
-    });
-  }
-
-  isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  }
-
-  async submitContactForm(data, submitBtn, formStatus, form) {
-    const btnText = submitBtn.querySelector('.btn-text');
-    const btnLoader = submitBtn.querySelector('.btn-loader');
-    
-    try {
-      // Show loading state
-      submitBtn.disabled = true;
-      btnText.style.display = 'none';
-      btnLoader.style.display = 'block';
-      formStatus.style.display = 'none';
-
-      // Simulate form submission (replace with actual endpoint)
-      await this.simulateFormSubmission(data);
-      
-      // Show success
-      this.showFormStatus(formStatus, 'success', 
-        'Thank you! Your message has been sent. We\'ll get back to you within 24 hours.');
-      
-      form.reset();
-      submitBtn.disabled = true;
-
-    } catch (error) {
-      console.error('Form submission failed:', error);
-      this.showFormStatus(formStatus, 'error', 
-        'Sorry, there was an error sending your message. Please try again or email us directly at studio@tartarus.dev');
-    } finally {
-      // Reset button state
-      btnText.style.display = 'block';
-      btnLoader.style.display = 'none';
-      submitBtn.disabled = false;
-    }
-  }
-
-  async simulateFormSubmission(data) {
-    // This simulates a backend submission
-    // In a real implementation, you would send this to your backend
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        // 90% success rate for demo
-        if (Math.random() > 0.1) {
-          console.log('Contact form data:', data);
-          resolve();
-        } else {
-          reject(new Error('Simulated network error'));
-        }
-      }, 2000);
-    });
-  }
-
-  showFormStatus(formStatus, type, message) {
-    formStatus.className = `form-status ${type}`;
-    formStatus.textContent = message;
-    formStatus.style.display = 'block';
-    
-    // Auto-hide success messages after 5 seconds
-    if (type === 'success') {
-      setTimeout(() => {
-        formStatus.style.display = 'none';
-      }, 5000);
-    }
-  }
 
   /* ========= Scroll / Resize ========= */
   onScroll() {
