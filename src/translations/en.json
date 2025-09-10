@@ -1,0 +1,75 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "The Myth",
+    "projects": "The Monuments", 
+    "connect": "The Oracle"
+  },
+  "hero": {
+    "title": "Forging <span class=\"text-highlight\">Digital Worlds</span>",
+    "subtitle": "Cyberpunk aesthetics meet cutting-edge technology in immersive gaming experiences",
+    "exploreBtn": "Explore Projects",
+    "contactBtn": "Get In Touch"
+  },
+  "about": {
+    "title": "The Myth",
+    "subtitle": "Crafting immersive digital experiences with precision and artistry",
+    "features": {
+      "quality": {
+        "title": "Quality Driven",
+        "description": "Every line of code, every pixel, every mechanic crafted with meticulous attention to detail"
+      },
+      "performance": {
+        "title": "Performance", 
+        "description": "Optimized engines and cutting-edge technology for seamless gaming experiences"
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "Pushing boundaries with experimental mechanics and narrative techniques"
+      }
+    }
+  },
+  "projects": {
+    "title": "The Monuments",
+    "subtitle": "Worlds forged in code and creativity",
+    "game": {
+      "title": "Tartarus: Pyréleus",
+      "status": "In Development",
+      "genre": "Action-adventure survival explorational horror",
+      "platforms": "Cross-platform: Windows, Linux, macOS",
+      "subtitle": "Echoes of the Abyss",
+      "description": "Rogue-lite exploration through procedural underworld temples with diegetic HUD design",
+      "viewProject": "View Project"
+    }
+  },
+  "connect": {
+    "title": "The Oracle",
+    "subtitle": "Ready to forge something extraordinary together?",
+    "contactTitle": "Direct Contact",
+    "email": "studio@tartarus.dev",
+    "responseTime": "We typically respond within 24 hours",
+    "socialTitle": "Follow Our Journey",
+    "socialPlatforms": {
+      "twitter": "Twitter / X",
+      "discord": "Discord", 
+      "github": "GitHub"
+    }
+  },
+  "footer": {
+    "companyName": "TARTARUS STUDIO",
+    "tagline": "Professional Game Development",
+    "description": "Crafting immersive digital experiences with cutting-edge technology and cyberpunk aesthetics.",
+    "navigation": "Navigation",
+    "links": {
+      "home": "Home",
+      "about": "About Studio", 
+      "projects": "Our Projects",
+      "contact": "Contact"
+    },
+    "copyright": "© 2025 Tartarus Studio. All rights reserved."
+  },
+  "language": {
+    "switch": "العربية",
+    "current": "English"
+  }
+}

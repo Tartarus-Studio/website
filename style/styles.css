@@ -1175,19 +1175,24 @@ body {
   width: 3.6rem;
   height: 3.6rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .copy-btn:hover {
-  background: rgba(220, 20, 60, 0.15);
-  border-color: rgba(220, 20, 60, 0.5);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.copy-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(220, 20, 60, 0.2);
+  border-color: rgba(220, 20, 60, 0.6);
   color: var(--color-primary);
-  transform: scale(1.05);
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(220, 20, 60, 0.2);
+}
+
+.copy-btn:active {
+  transform: translateY(0) scale(0.95);
+  transition: transform 0.1s ease;
 }
 
 .copy-btn svg {
@@ -1705,6 +1710,166 @@ body {
 }
 
 /* ===========================
+   LANGUAGE SWITCHER
+   =========================== */
+
+.language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius);
+  padding: 0.8rem 1.2rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.language-switcher:hover {
+  background: rgba(220, 20, 60, 0.1);
+  border-color: rgba(220, 20, 60, 0.3);
+  color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.language-icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  flex-shrink: 0;
+}
+
+.language-text {
+  font-size: 1.3rem;
+  white-space: nowrap;
+}
+
+/* ===========================
+   RTL SUPPORT
+   =========================== */
+
+/* RTL Layout Adjustments */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .nav-menu {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .hero-actions {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .social-links {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .features-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .projects-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .social-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .footer-grid {
+  direction: rtl;
+}
+
+/* RTL Text Alignment */
+[dir="rtl"] .hero-content,
+[dir="rtl"] .section-header,
+[dir="rtl"] .feature-card,
+[dir="rtl"] .project-content,
+[dir="rtl"] .contact-card,
+[dir="rtl"] .footer-brand {
+  text-align: right;
+}
+
+/* RTL Navigation */
+[dir="rtl"] .nav-container {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .brand {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .brand-text {
+  margin-right: var(--space-sm);
+  margin-left: 0;
+}
+
+/* RTL Buttons and Links */
+[dir="rtl"] .btn {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .btn-icon {
+  margin-left: 0;
+  margin-right: var(--space-sm);
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .project-link .arrow {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .social-arrow svg {
+  transform: scaleX(-1);
+}
+
+/* RTL Email Display */
+[dir="rtl"] .email-display {
+  flex-direction: row-reverse;
+}
+
+/* RTL Social Cards */
+[dir="rtl"] .social-card {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .social-info {
+  text-align: right;
+}
+
+/* Arabic Font Improvements */
+.lang-ar {
+  font-family: 'Cairo', 'Tajawal', 'Amiri', 'Inter', sans-serif;
+}
+
+.lang-ar .hero-title,
+.lang-ar .section-title {
+  font-family: 'Cairo', 'Orbitron', sans-serif;
+  font-weight: 700;
+}
+
+.lang-ar .brand-text {
+  font-family: 'Cairo', 'Orbitron', sans-serif;
+}
+
+/* RTL Spacing Adjustments */
+[dir="rtl"] .hamburger-line {
+  transform-origin: right center;
+}
+
+[dir="rtl"] .nav-toggle.active .hamburger-line:first-child {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+[dir="rtl"] .nav-toggle.active .hamburger-line:last-child {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ===========================
    RESPONSIVE DESIGN
    =========================== */
 
@@ -1798,6 +1963,18 @@ body {
 
   .contact-card {
     margin: 0 -1rem;
+  }
+
+  /* Mobile Language Switcher */
+  .language-switcher {
+    justify-content: center;
+    margin-top: var(--space-sm);
+    width: 100%;
+  }
+
+  /* RTL Mobile Adjustments */
+  [dir="rtl"] .nav-menu {
+    text-align: center;
   }
 }
 

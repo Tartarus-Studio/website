@@ -16,6 +16,11 @@ class TartarusApp {
       throttleDelay: 80 // ~12fps for heavy scroll work; smoother + efficient
     };
 
+    // Translation system
+    this.currentLanguage = localStorage.getItem('language') || 'en';
+    this.translations = {};
+    this.isRTL = this.currentLanguage === 'ar';
+
     // Pre-bind handlers (so we can add/remove cleanly)
     this.onScrollThrottled = this.throttle(this.onScroll.bind(this), this.config.throttleDelay);
     this.onResizeThrottled = this.throttle(this.onResize.bind(this), this.config.throttleDelay);
@@ -43,14 +48,19 @@ class TartarusApp {
     console.log('🔥 Tartarus Studio initialized');
   }
 
-  onDOMReady() {
+  async onDOMReady() {
     try {
       this.cache();
+      await this.loadTranslations();
+      this.setupLanguageSwitcher();
       this.setupNavigation();
       this.setupSocialLinks();
       this.setupEmailCopy();
       this.initializeAnimations();
       this.setupImageErrorHandling();
+      
+      // Apply initial language
+      this.applyLanguage(this.currentLanguage);
 
       // Initial state
       this.onScroll(); // sets progress + active link + parallax
@@ -120,18 +130,27 @@ class TartarusApp {
   setupEmailCopy() {
     const btn = document.getElementById('copyEmailBtn');
     if (!btn) return;
-    btn.addEventListener('click', async () => {
+    
+    // Add both click and touchstart for mobile compatibility
+    const handleCopy = async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
       try {
         await this.copyToClipboard(this.config.email);
         this.showCopyFeedback(btn);
-      } catch {
+      } catch (error) {
         this.showCopyError(btn);
       }
-    });
+    };
+    
+    btn.addEventListener('click', handleCopy);
+    btn.addEventListener('touchstart', handleCopy, { passive: false });
   }
 
   async copyToClipboard(text) {
     try {
+      // Try modern clipboard API first
       if (navigator.clipboard && window.isSecureContext) {
         await navigator.clipboard.writeText(text);
         return;
@@ -143,8 +162,10 @@ class TartarusApp {
       ta.style.position = 'fixed';
       ta.style.left = '-1000px';
       ta.style.top = '-1000px';
+      ta.style.opacity = '0';
       ta.setAttribute('readonly', '');
       document.body.appendChild(ta);
+      ta.focus();
       ta.select();
       ta.setSelectionRange(0, 99999); // For mobile devices
       
@@ -163,20 +184,106 @@ class TartarusApp {
   showCopyFeedback(button) {
     const copyIcon = button.querySelector('.copy-icon');
     const checkIcon = button.querySelector('.check-icon');
+    
     if (copyIcon && checkIcon) {
+      // Show success state
       copyIcon.style.display = 'none';
       checkIcon.style.display = 'block';
       button.style.color = '#22c55e';
+      button.style.transform = 'scale(1.1)';
+      
+      // Reset after 2 seconds
       setTimeout(() => {
         copyIcon.style.display = 'block';
         checkIcon.style.display = 'none';
         button.style.color = '';
-      }, 1800);
+        button.style.transform = '';
+      }, 2000);
     }
   }
   showCopyError(button) {
     button.style.color = '#ff0080';
     setTimeout(() => (button.style.color = ''), 1800);
+  }
+
+  /* ========= Translation System ========= */
+  async loadTranslations() {
+    try {
+      const [enResponse, arResponse] = await Promise.all([
+        fetch('./src/translations/en.json'),
+        fetch('./src/translations/ar.json')
+      ]);
+      
+      this.translations.en = await enResponse.json();
+      this.translations.ar = await arResponse.json();
+      
+      console.log('Translations loaded successfully');
+    } catch (error) {
+      console.error('Failed to load translations:', error);
+      // Fallback to English if translations fail to load
+      this.currentLanguage = 'en';
+    }
+  }
+
+  setupLanguageSwitcher() {
+    const switcher = document.getElementById('languageSwitcher');
+    if (!switcher) return;
+
+    switcher.addEventListener('click', () => {
+      const newLanguage = this.currentLanguage === 'en' ? 'ar' : 'en';
+      this.switchLanguage(newLanguage);
+    });
+  }
+
+  switchLanguage(language) {
+    this.currentLanguage = language;
+    this.isRTL = language === 'ar';
+    localStorage.setItem('language', language);
+    
+    this.applyLanguage(language);
+    console.log(`Switched to ${language}`);
+  }
+
+  applyLanguage(language) {
+    const translations = this.translations[language];
+    if (!translations) {
+      console.error(`No translations found for language: ${language}`);
+      return;
+    }
+
+    // Apply RTL/LTR direction
+    document.documentElement.setAttribute('dir', this.isRTL ? 'rtl' : 'ltr');
+    document.documentElement.setAttribute('lang', language);
+    
+    // Add language class to body for CSS styling
+    document.body.className = document.body.className.replace(/lang-\w+/g, '');
+    document.body.classList.add(`lang-${language}`);
+
+    // Translate all elements with data-translate attribute
+    const elements = document.querySelectorAll('[data-translate]');
+    elements.forEach(element => {
+      const key = element.getAttribute('data-translate');
+      const translation = this.getNestedTranslation(translations, key);
+      
+      if (translation) {
+        if (element.innerHTML.includes('<span class="text-highlight">')) {
+          // Handle HTML content with highlighting
+          element.innerHTML = translation;
+        } else {
+          element.textContent = translation;
+        }
+      }
+    });
+
+    // Update language switcher text
+    const languageText = document.querySelector('.language-text');
+    if (languageText) {
+      languageText.textContent = translations.language?.switch || (language === 'en' ? 'العربية' : 'English');
+    }
+  }
+
+  getNestedTranslation(obj, key) {
+    return key.split('.').reduce((o, k) => o && o[k], obj);
   }
 
   /* ========= Social ========= */
