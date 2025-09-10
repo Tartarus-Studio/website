@@ -3,9 +3,41 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Tartarus Studio - Professional game development with cyberpunk aesthetics and cutting-edge technology">
-  <meta name="theme-color" content="#0a0a0f">
-  <title>Tartarus Studio | Game Development</title>
+  <meta name="description" content="Tartarus Studio - Professional game development with cyberpunk aesthetics and cutting-edge technology. Creators of Tartarus: Pyréleus and immersive digital experiences.">
+  <meta name="keywords" content="game development, cyberpunk games, indie games, Unity games, Tartarus Studio, action adventure games, survival horror">
+  <meta name="author" content="Tartarus Studio">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#dc143c">
+  <meta name="color-scheme" content="dark">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tartarus.studio/">
+  <meta property="og:title" content="Tartarus Studio - Professional Game Development">
+  <meta property="og:description" content="Forging digital worlds with cyberpunk aesthetics and cutting-edge technology. Creators of Tartarus: Pyréleus and immersive gaming experiences.">
+  <meta property="og:image" content="https://tartarus.studio/assets/works/work-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Tartarus Studio">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://tartarus.studio/">
+  <meta property="twitter:title" content="Tartarus Studio - Professional Game Development">
+  <meta property="twitter:description" content="Forging digital worlds with cyberpunk aesthetics and cutting-edge technology. Creators of Tartarus: Pyréleus and immersive gaming experiences.">
+  <meta property="twitter:image" content="https://tartarus.studio/assets/works/work-1.webp">
+  <meta property="twitter:site" content="@tartarus_studio">
+  <meta property="twitter:creator" content="@tartarus_studio">
+
+  <!-- Additional Meta Tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Tartarus Studio">
+  <meta name="msapplication-TileColor" content="#dc143c">
+  <meta name="msapplication-config" content="/browserconfig.xml">
+  
+  <title>Tartarus Studio - Professional Game Development | Cyberpunk Gaming Experiences</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
@@ -14,6 +46,46 @@
   <!-- Styles -->
   <link rel="stylesheet" href="./style/styles.css">
   <link rel="icon" type="image/svg+xml" href="./assets/logo-mono.svg">
+  <link rel="manifest" href="./manifest.webmanifest">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Tartarus Studio",
+    "alternateName": "Tartarus",
+    "url": "https://tartarus.studio",
+    "logo": "https://tartarus.studio/assets/logo.svg",
+    "description": "Professional game development studio specializing in cyberpunk aesthetics and cutting-edge technology",
+    "foundingDate": "2024",
+    "industry": "Video Game Development",
+    "knowsAbout": ["Game Development", "Unity Engine", "Cyberpunk Games", "Indie Games", "Action Adventure Games"],
+    "sameAs": [
+      "https://twitter.com/tartarus_studio",
+      "https://github.com/tartarus-studio",
+      "https://discord.gg/tartarus"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "studio@tartarus.dev",
+      "contactType": "customer service"
+    },
+    "hasProduct": {
+      "@type": "VideoGame",
+      "name": "Tartarus: Pyréleus",
+      "description": "Action-adventure survival explorational horror game with rogue-lite exploration through procedural underworld temples",
+      "genre": ["Action", "Adventure", "Survival", "Horror"],
+      "gamePlatform": ["PC", "Windows", "Linux", "macOS"],
+      "applicationCategory": "Game",
+      "operatingSystem": ["Windows", "Linux", "macOS"],
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tartarus Studio"
+      }
+    }
+  }
+  </script>
 </head>
 <body>
   <!-- Background Effects -->
@@ -148,17 +220,27 @@
               <div class="project-meta">
                 <div class="project-number">01</div>
                 <div class="project-tags in-card">
-                  <span class="tag">Unity</span>
+                  <span class="tag">Unity 2023.3</span>
                   <span class="tag">PC</span>
-                  <span class="tag">2025</span>
+                  <span class="tag">Q2 2025</span>
                 </div>
               </div>
 
               <h4 class="project-subtitle">Echoes of the Abyss</h4>
-              <p class="project-description">Rogue-lite exploration through procedural underworld temples with diegetic HUD design</p>
+              <p class="project-description">Rogue-lite exploration through procedural underworld temples with diegetic HUD design. Navigate through shifting labyrinths where each death reshapes the underworld's architecture.</p>
+              
+              <div class="project-features">
+                <ul class="feature-list">
+                  <li>✦ Procedural temple generation with Greek mythology themes</li>
+                  <li>✦ Immersive diegetic UI integrated into the game world</li>
+                  <li>✦ Dynamic lighting and shadow systems</li>
+                  <li>✦ Psychological horror elements with survival mechanics</li>
+                </ul>
+              </div>
 
               <div class="project-actions">
-                <a href="#" class="project-link">View Project <span class="arrow">→</span></a>
+                <a href="mailto:studio@tartarus.dev?subject=Tartarus: Pyréleus - Game Inquiry" class="project-link">Learn More <span class="arrow">→</span></a>
+                <a href="#connect" class="project-link secondary">Follow Development</a>
               </div>
             </div>
           </article>
@@ -179,11 +261,46 @@
             <p class="section-subtitle">Ready to forge something extraordinary together?</p>
           </div>
 
-          <div class="contact-options">
+            <div class="contact-options">
             <div class="contact-card primary-contact">
               <div class="contact-header">
-                <h3 class="contact-title">Direct Contact</h3>
+                <h3 class="contact-title">Get In Touch</h3>
               </div>
+
+              <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                  <label for="contact-name">Name</label>
+                  <input type="text" id="contact-name" name="name" required placeholder="Your name">
+                </div>
+                
+                <div class="form-group">
+                  <label for="contact-email">Email</label>
+                  <input type="email" id="contact-email" name="email" required placeholder="your@email.com">
+                </div>
+                
+                <div class="form-group">
+                  <label for="contact-subject">Subject</label>
+                  <select id="contact-subject" name="subject" required>
+                    <option value="">Select a topic</option>
+                    <option value="game-inquiry">Game Development Inquiry</option>
+                    <option value="collaboration">Collaboration Opportunity</option>
+                    <option value="press">Press & Media</option>
+                    <option value="general">General Question</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="contact-message">Message</label>
+                  <textarea id="contact-message" name="message" required placeholder="Tell us about your project or inquiry..." rows="4"></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn" disabled>
+                  <span class="btn-text">Send Message</span>
+                  <span class="btn-loader" style="display: none;">Sending...</span>
+                </button>
+                
+                <div class="form-status" id="formStatus" style="display: none;"></div>
+              </form>
 
               <div class="email-section">
                 <div class="email-display" id="emailDisplay">
@@ -285,6 +402,27 @@
     </div>
   </footer>
 
+  <!-- Analytics (Privacy-focused) -->
+  <script>
+    // Simple privacy-focused analytics
+    if (!localStorage.getItem('analytics-opt-out')) {
+      window.analytics = {
+        track: function(event, data) {
+          console.log('Analytics:', event, data);
+          // This is a placeholder for privacy-focused analytics
+          // Replace with your preferred analytics solution
+        }
+      };
+      
+      // Track page view
+      window.analytics.track('page_view', {
+        page: location.pathname,
+        title: document.title,
+        timestamp: new Date().toISOString()
+      });
+    }
+  </script>
+  
   <!-- Scripts -->
   <script src="./src/app.js" defer></script>
 </body>
