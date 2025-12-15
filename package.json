@@ -1,0 +1,33 @@
+{
+  "name": "tartarus-website",
+  "version": "1.0.0",
+  "description": "Node js express app to run Tartarus studio website",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm ci; node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tartarus-studio/website.git"
+  },
+  "keywords": [
+    "studio",
+    "node",
+    "express",
+    "html",
+    "css",
+    "js",
+    "javascript"
+  ],
+  "author": "Tartarus <dev@tartarus.studio>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tartarus-studio/website/issues"
+  },
+  "homepage": "https://github.com/tartarus-studio/website#readme",
+  "dependencies": {
+    "compression": "^1.8.1",
+    "express": "^5.2.1"
+  }
+}
