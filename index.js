@@ -27,7 +27,7 @@ setInterval(() => {
 app.set('trust proxy', true)
 app.use(compression())
 
-app.get('/', (req, res, next) => {
+app.get(['/en/', '/ar/'], (req, res, next) => {
 	visitCount++
 	uniqueIPs.add(req.headers['x-forwarded-for'] || req.ip)
 	next()
@@ -37,6 +37,10 @@ app.use(express.static(join(__dirname, "public"), {
 	maxAge: 600000, // 10 min
 	dotfiles: "ignore"
 }))
+
+app.get('/', (req, res) => {
+	res.redirect(307, `/${req.acceptsLanguages(["en", "ar"]) || "en"}`)
+})
 
 app.get('/visits', (req, res) => {
 	res.send('' + visitCount)
