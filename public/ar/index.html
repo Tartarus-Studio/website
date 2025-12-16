@@ -177,24 +177,24 @@
         </div>
         <div class="primary-contact">
           <h3 class="contact-title">التواصل المباشر</h3>
-          <div class="contact-box" dir="ltr">
-            <a class="contact-text" href="mailto:contact@tartarus.studio" target="_blank">contact@tartarus.studio</a>
-            <button class="copy-btn" onclick="copyText(this, 'contact@tartarus.studio')">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+          <a class="contact-box" dir="ltr" href="mailto:contact@tartarus.studio" target="_blank">
+            <div class="contact-text">contact@tartarus.studio</div>
+            <div class="contact-icon">
+              <svg fill="currentColor" viewBox="0 0 512 512">
+                <path
+                  d="M511 112a71 71 0 0 0-70-57H71a71 71 0 0 0-71 71v260a71 71 0 0 0 26 55c12 10 28 16 45 16h370a71 71 0 0 0 65-43c4-9 6-18 6-28V126l-1-14zM47 102c6-7 14-11 24-11h370a34 34 0 0 1 28 14L275 274c-6 5-12 7-19 7s-13-2-19-7L43 105l4-3zM36 386V143l141 122L36 387v-1zm405 35H71c-6 0-12-2-17-5l148-129 14 12a62 62 0 0 0 80 0l14-12 148 129c-5 3-11 5-17 5zm35-35v1L335 265l141-122v243z" />
               </svg>
-            </button>
-          </div>
-          <div class="contact-box" dir="ltr">
-            <a class="contact-text" href="https://wa.me/966575046513" target="_blank">+966 57 504 6513</a>
-            <button class="copy-btn" onclick="copyText(this, '+966575046513')">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+            </div>
+          </a>
+          <a class="contact-box" dir="ltr" href="https://wa.me/966575046513" target="_blank">
+            <div class="contact-text">+966 57 504 6513</div>
+            <div class="contact-icon">
+              <svg fill="currentColor" viewBox="0 0 32 32">
+                <path
+                  d="M27 5A15 15 0 0 0 1 16l2 7-2 8 8-2 7 2A15 15 0 0 0 27 5zM16 28c-2 0-4 0-6-2v1l-1-1-4 1 1-4v-1c-2-1-2-4-2-6a12 12 0 1 1 12 12zm7-9-3-1h-1l-1 1-1 1-3-2-2-3 1-1 1-1a1 1 0 0 0-1-1l-1-2V9h-2a4 4 0 0 0-1 4l1 3 6 6 2 1a5 5 0 0 0 3 0l2-2a3 3 0 0 0 1-2h-1z" />
               </svg>
-            </button>
-          </div>
+            </div>
+          </a>
           <p class="response-time">عادة يفتر الرد أقل من 24 ساعة</p>
         </div>
       </div>
@@ -216,17 +216,6 @@
     </div>
     <div class="copyright">&copy; 2025 Tartarus</div>
   </footer>
-
-  <script>
-    function copyText(btn, text) {
-      navigator.clipboard.writeText(text).then(() => {
-        btn.classList.add("copy-success")
-        setTimeout(() => {
-          btn.classList.remove("copy-success")
-        }, 2000);
-      });
-    }
-  </script>
 </body>
 
 </html>
