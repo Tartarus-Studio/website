@@ -58,6 +58,7 @@
   --text: #e4e4e7;
   --muted: #a1a1aa;
   --primary: linear-gradient(135deg, #6333cc, #393393);
+  --color-primary: #6333cc;
 }
 
 html {
@@ -341,6 +342,63 @@ h3 {
   position: absolute;
   inset: 0;
   background: radial-gradient(50rem 12rem at 50% -5%, rgba(60, 20, 220, 0.1), transparent);
+}
+
+.projects .container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.projects .container::before,
+.projects .container::after {
+  content: '';
+  position: absolute;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 1rem;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.projects .container::before {
+  top: -4rem;
+  left: -4rem;
+  box-shadow: 0 0 0 1px rgba(100, 120, 200, 0.35) inset, 0 0 28px rgba(100, 120, 200, 0.18);
+  transform: rotate(45deg);
+}
+
+.projects .container::after {
+  bottom: -4rem;
+  right: -4rem;
+  box-shadow: 0 0 0 1px rgba(80, 60, 180, 0.35) inset, 0 0 28px rgba(80, 60, 180, 0.18);
+  transform: rotate(45deg);
+}
+
+.projects .section-title {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.4rem;
+}
+
+.projects .section-title::after {
+  content: '';
+  position: absolute;
+  width: 120%;
+  height: 2px;
+  background: var(--primary);
+  bottom: -10px;
+  left: -10%;
+  border-radius: 1px;
+  filter: drop-shadow(0 0 8px var(--color-primary));
+}
+
+.projects .section-header {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 4rem;
 }
 
 .project {
