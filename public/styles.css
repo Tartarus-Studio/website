@@ -612,6 +612,7 @@ h3 {
   display: flex;
   align-items: center;
   gap: 1.6rem;
+  height: 6rem;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(60, 20, 220, 0.25);
   border-radius: 1.2rem;
@@ -647,6 +648,16 @@ h3 {
 .contact-icon svg {
   width: 2rem;
   height: 2rem;
+}
+
+@media (max-width: 448px) {
+  .primary-contact {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .contact-icon {
+    display: none;
+  }
 }
 
 .response-time {
