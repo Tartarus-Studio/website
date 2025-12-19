@@ -77,9 +77,9 @@ body {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: radial-gradient(ellipse at top, #3c13dc09, transparent 75%),
-    repeating-linear-gradient(0deg, #3c13dc0f 0, transparent 1px, transparent 100px),
-    repeating-linear-gradient(90deg, #3c13dc0f 0, transparent 1px, transparent 100px);
+  background: radial-gradient(ellipse at top, #3c13dc19, transparent 75%),
+    repeating-linear-gradient(0deg, #3c13dc19 0, transparent 1px, transparent 100px),
+    repeating-linear-gradient(90deg, #3c13dc19 0, transparent 1px, transparent 100px);
 }
 
 nav {
