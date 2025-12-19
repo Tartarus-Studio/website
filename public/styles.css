@@ -386,11 +386,11 @@ h3 {
 .projects .section-title::after {
   content: '';
   position: absolute;
-  width: 120%;
+  width: 180%;
   height: 2px;
   background: var(--primary);
   bottom: -10px;
-  left: -10%;
+  left: -40%;
   border-radius: 1px;
   filter: drop-shadow(0 0 8px var(--color-primary));
 }
