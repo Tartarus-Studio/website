@@ -39,7 +39,7 @@ app.use(express.static(join(__dirname, "public"), {
 }))
 
 app.get('/', (req, res) => {
-	res.redirect(307, `/${req.acceptsLanguages(["en", "ar"]) || "en"}`)
+	res.redirect(307, `/${req.acceptsLanguages(["en", "ar"]) || "en"}/`)
 })
 
 app.get('/visits', (req, res) => {
