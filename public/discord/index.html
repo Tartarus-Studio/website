@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Discord - Tartarus Studio</title>
+
+  <link rel="preload" href="/assets/fonts/orbitron.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+</head>
+
+<body>
+  <div class="bg"></div>
+
+  <section class="hero container">
+    <div class="logo-wrap">
+      <img src="/assets/logo.svg" alt="Tartarus Logo">
+    </div>
+
+    <div>
+      <h1>Redirecting to <span class="highlight">Discord</span></h1>
+      <p id="status" class="subtitle">Auto-redirect disabled</p>
+
+      <div class="btn-group">
+        <a id="teleport" href="https://discord.gg/HWQZvpyKJx" class="btn btn-primary" rel="noopener" target="_blank">
+          <span>Teleport</span>
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+
+        <a href="/" class="btn btn-secondary">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+          </svg>
+          <span>Return Home</span>
+        </a>
+      </div>
+
+      <noscript>
+        <p class="subtitle">JavaScript is disabled. Use “Open now” if the redirect doesn’t start.</p>
+      </noscript>
+    </div>
+  </section>
+
+  <script>
+    const REDIRECT_URL = "https://discord.gg/HWQZvpyKJx";
+
+    const statusEl = document.getElementById('status');
+    const linkEl = document.getElementById('teleport');
+    linkEl.href = REDIRECT_URL;
+
+    let count = 3;
+
+    statusEl.textContent = "Redirecting in " + count + " seconds...";
+
+    const timer = setInterval(() => {
+      count--;
+      statusEl.textContent = "Redirecting in " + count + " seconds...";
+      if (count <= 0) {
+        clearInterval(timer);
+        window.location.href = REDIRECT_URL;
+      }
+    }, 1000);
+
+    const stopRedirect = () => {
+      clearInterval(timer);
+      statusEl.textContent = 'Auto-redirect stopped';
+    };
+
+    document.addEventListener('click', stopRedirect);
+    document.addEventListener('keydown', stopRedirect);
+  </script>
+</body>
+
+</html>
+
