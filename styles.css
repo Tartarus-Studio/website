@@ -333,15 +333,8 @@ h3 {
 }
 
 .projects {
-  background: #111;
+  background: var(--bg);
   position: relative;
-}
-
-.projects::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(50rem 12rem at 50% -5%, rgba(60, 20, 220, 0.1), transparent);
 }
 
 .projects .container {
@@ -349,33 +342,6 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-x: clip;
-}
-
-
-.projects .container::before,
-.projects .container::after {
-  content: '';
-  position: absolute;
-  width: 8rem;
-  height: 8rem;
-  border-radius: 1rem;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.projects .container::before {
-  top: -4rem;
-  left: -4rem;
-  box-shadow: 0 0 0 1px rgba(100, 120, 200, 0.35) inset, 0 0 28px rgba(100, 120, 200, 0.18);
-  transform: rotate(45deg);
-}
-
-.projects .container::after {
-  bottom: -4rem;
-  right: -4rem;
-  box-shadow: 0 0 0 1px rgba(80, 60, 180, 0.35) inset, 0 0 28px rgba(80, 60, 180, 0.18);
-  transform: rotate(45deg);
 }
 
 .projects .section-title {
