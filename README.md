@@ -4,4 +4,6 @@
 
 ---
 
-main branch is hosted to https://tartarus-studio.github.io/website/
+main branch is hosted to
+https://tartarus-studio.github.io/website/ 
+https://tartarus-studio.pages.dev/en/
