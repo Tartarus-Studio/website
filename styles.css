@@ -338,6 +338,7 @@ h3 {
 }
 
 .projects .container {
+  max-width: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -368,14 +369,22 @@ h3 {
   margin-bottom: 4rem;
 }
 
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+}
+
 .project {
+  flex: 0 1 35rem;
   position: relative;
   background: rgba(16, 18, 26, 0.85);
   border: 1px solid var(--border);
   border-radius: 1.4rem;
   overflow: hidden;
   max-width: 45rem;
-  margin: 0 auto;
   transition: 0.4s;
 }
 
@@ -411,14 +420,14 @@ h3 {
 }
 
 .project-img {
-  aspect-ratio: 16/9;
   overflow: hidden;
 }
 
 .project-img img {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 16/9;
   object-fit: cover;
+  display: block;
   transition: 0.7s;
 }
 
