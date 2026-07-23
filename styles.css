@@ -136,15 +136,31 @@ nav .container {
 }
 
 .nav-links a {
+  position: relative;
   color: var(--text);
   text-decoration: none;
   font-weight: 500;
-  transition: 0.3s;
+  transition: color 0.3s;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px; /* Distance below the text */
+  width: 0;
+  height: 2px;
+  background: #5C33C4;
+  transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: #fff;
+  color: #5C33C4;
   text-shadow: 0 0 24px #fff6;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 .lang-button {
